@@ -1,25 +1,21 @@
+/* ------------------------------------------
+Use GL to draw cube wireframe.
+Color gradually changes from c1 to c2, along the z axis (from z to zz). 
+*/ ------------------------------------------
+
 public class CubeWireframe : MonoBehaviour
 {
     public bool showWireframe = false;
     
-    public Color c1 = Color.cyan; //线的颜色
-    private Color c2 = new Color(1, 1, 1, 0.1f);//线的颜色渐变
+    public Color c1 = Color.cyan;
+    private Color c2 = new Color(1, 1, 1, 0.1f);
     
-    public  float z = 0f;//起点
-    public  float zz = -1f;//终点
-    
-    
-    void Start()
-    {
-        c1 = Color.cyan;
-        c2 = new Color(1, 1, 1, 0.4f);
-    }
+    public  float z = 0f;
+    public  float zz = -1f;
     
     static Material lineMaterial;
-    static void CreateLineMaterial()
-        {
-            if (!lineMaterial)
-            {
+    static void CreateLineMaterial(){
+            if (!lineMaterial){
                 // Unity has a built-in shader that is useful for drawing simple colored things.
                 Shader shader = Shader.Find("Hidden/Internal-Colored");
                 lineMaterial = new Material(shader);
@@ -34,10 +30,8 @@ public class CubeWireframe : MonoBehaviour
             }
         }
     
-    void OnRenderObject()
-    {
-        if (showWireframe)
-        {
+    void OnRenderObject(){
+        if (showWireframe){
                 CreateLineMaterial();
                 lineMaterial.SetPass(0);
                 GL.PushMatrix();//渲染入栈///////////////////////////////////////////////////////////
@@ -46,7 +40,7 @@ public class CubeWireframe : MonoBehaviour
     
                 GL.Begin(GL.LINES);// Z方向渐变 --------------------------------------------------
                 GL.Color(c1);//new Color(1, 0, 0)
-               GL.Vertex3(0.5f, 0.5f, z);
+                GL.Vertex3(0.5f, 0.5f, z);
                 GL.Vertex3(0.5f, -0.5f, z);
                 GL.Vertex3(0.5f, -0.5f, z);
                 GL.Vertex3(-0.5f, -0.5f, z);
