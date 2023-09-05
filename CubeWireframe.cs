@@ -1,5 +1,5 @@
 /* ------------------------------------------
-Use GL to draw cube wireframe.
+Use GL to draw cube wireframe. <https://docs.unity3d.com/2023.3/Documentation/ScriptReference/GL.html>
 Color gradually changes from c1 to c2, along the z axis (from z to zz). 
 */ ------------------------------------------
 
